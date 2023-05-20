@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Set these paths appropriately
+
+BIN="/home/rizstwn/demo-skripsi/treetagger/bin"
+CMD="/home/rizstwn/demo-skripsi/treetagger/cmd"
+LIB="/home/rizstwn/demo-skripsi/treetagger/lib"
+
+OPTIONS="-token -lemma -sgml"
+
+TOKENIZER=${CMD}/utf8-tokenize.perl
+TAGGER=${BIN}/tree-tagger
+ABBR_LIST=${LIB}/english-abbreviations
+PARFILE=${LIB}/english-bnc.par
+
+$TOKENIZER -e -a $ABBR_LIST $* |
+# remove empty lines
+grep -v '^$' |
+# tagging
+$TAGGER $OPTIONS $PARFILE 
