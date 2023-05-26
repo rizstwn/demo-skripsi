@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from predict import get_review_prediction
+from apriori import Apriori
 PAGE_CONFIG = {"page_title":"Fallout 76 Review Aspect Sentiment Analysis","page_icon":":video_game:","layout":"centered"}
 st.set_page_config(**PAGE_CONFIG)
 
@@ -15,6 +16,7 @@ def process_result(pred_res):
 	return pd.DataFrame.from_dict(res)
 
 def main():
+	Apriori()
 	st.title("Fallout 76 Review Aspect Sentiment Analysis")
 	review_text = st.text_area("Review Text",height=250)
 	if st.button("Predict"):

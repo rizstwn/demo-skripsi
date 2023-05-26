@@ -9,17 +9,13 @@ def load_model(art_dir):
   return model
 
 class Apriori():
-  def __init__(self, transaction=None, min_support=None, min_confidence=0, min_lift=0, max_length=None, class_sup=None, 
-               model_dir=None):
-    if model_dir:
-      self.__dict__ = load_model(model_dir)
-    else:
-      self.transaction = transaction
-      self.min_support = min_support
-      self.min_confidence = min_confidence
-      self.min_lift = min_lift
-      self.max_length = max_length
-      self.class_sup = class_sup
+  def __init__(self, transaction=None, min_support=None, min_confidence=0, min_lift=0, max_length=None, class_sup=None):
+    self.transaction = transaction
+    self.min_support = min_support
+    self.min_confidence = min_confidence
+    self.min_lift = min_lift
+    self.max_length = max_length
+    self.class_sup = class_sup
 
   def fit(self, data):
     self.transaction = data

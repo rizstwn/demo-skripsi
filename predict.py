@@ -5,7 +5,7 @@ from nltk.tokenize import word_tokenize
 import pandas as pd
 import numpy as np
 import string
-from apriori import load_model,Apriori
+from apriori import load_model
 # import glob
 # import pickle
 # from sklearn.feature_extraction.text import CountVectorizer
@@ -108,7 +108,7 @@ def get_review_prediction(review_text):
     'heuristic':{}
   }
   for aspect_name in ['aesthetics','interfaces','mechanics','usability']:
-    apriori_model = Apriori(f"{pkl_dirs}/Apriori Model/{aspect_name}_apriori_tuned.pkl")
+    apriori_model = load_model(f"{pkl_dirs}/Apriori Model/{aspect_name}_apriori_tuned.pkl")
     bow_model = load_model(f"{pkl_dirs}/BoW Model/bow-{aspect_name}-smote.pkl")
     svm_model = load_model(f"{pkl_dirs}/SVM Model/{aspect_name}_bow_smo-svm.pkl")
     
